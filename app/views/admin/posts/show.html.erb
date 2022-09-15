@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="h4  my-3">投稿詳細</div>
+  <div class="row">
+    <div class="row">
+      <div class="post-image">
+        <%=image_tag @post.image,size:"350x250" %>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="row ml-4">投稿件名
+        <div class="col mb-3 ml-2">
+         <%=@post.name %>
+        </div>
+      </div>
+
+      <div class="row ml-4">投稿説明
+        <div class="col mb-3 ml-2">
+         <%=@post.introduction %>
+        </div>
+      </div>
+
+      <div class="row ml-4">出欠確認
+        <div class="col  mb-3 ml-2">
+          <% if @post.is_active == true %>
+            参加
+          <% else %>
+            不参加
+          <% end %>
+        </div>
+      </div>
+
+      <%=link_to "編集する",edit_admin_post_path(@post),class: "btn btn-success ml-4 my-2" %>
+    </div>
+  </div>
+</div>

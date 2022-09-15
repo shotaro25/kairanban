@@ -1,0 +1,6 @@
+ ja:
+    enums:
+      post:
+        attendance:
+          join: "参加"
+          not_join: "不参加"

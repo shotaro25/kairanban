@@ -1,0 +1,72 @@
+<div class="row h5 my-3 mx-5">
+   <%= @user.name %>さんの会員情報編集
+</div>
+<div class="container">
+
+  <div class="row mb-3">
+    <div class="col-sm-2">
+      会員ID
+    </div>
+    <div class="col">
+      <%= @user.id %>
+    </div>
+  </div>
+
+  <%= form_with model: @user,url: admin_user_path(@user) do |f| %>
+
+    <div class="row mb-3">
+      <%= f.label "名前", class: "col-sm-2" %>
+      <div class="col">
+        <%= f.text_field :name, class: "form-control-sm"%>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <%= f.label "フリガナ", class: "col-sm-2" %>
+      <div class="col">
+        <%= f.text_field :name_kana, class: "form-control-sm"%>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <%=f.label "郵便番号", class: "col-sm-2" %>
+      <div class="col">
+        <%=f.text_field :postal_code, class: "form-control-sm"%>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <%=f.label "住所", class: "col-sm-2" %>
+      <div class="col">
+        <%=f.text_field :address, class: "form-control-sm" %>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <%=f.label "電話番号", class: "col-sm-2"%>
+      <div class="col">
+        <%=f.text_field :telephone_number, class: "form-control-sm" %>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <%= f.label "メールアドレス", class: "col-sm-2" %>
+      <div class="col ">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control-sm" %>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <%= f.label "会員ステータス", class: "col-sm-2" %>
+      <div class="col">
+        <%= f.radio_button :is_active,true %>有効
+        <%= f.radio_button :is_active,false%>退会
+      </div>
+    </div>
+
+    <div class="row ml-5">
+      <%= f.submit "変更を保存", class: "ml-5 btn btn-success btn-lg" %>
+    </div>
+
+  <% end %>
+</div>

@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="h4 text-left">管理者ログイン</div>
+
+ <div class="row justify-content-center">
+    <%= form_with model: @admin, url: admin_session_path do |f| %>
+      <div class="form-group row">
+        <label>メールアドレス</label>
+        <%= f.text_field :email, class: "form-control" %>
+      </div>
+      <div class="form-group row">
+        <label>パスワード</label>
+        <%= f.password_field :password, autocomplete: "current-password",class: "form-control" %>
+      </div>
+      <div class="actions row">
+        <%= f.submit "ログイン",class:"btn btn-info w-50"%>
+      </div>
+    <% end %>
+    <%= render "admin/shared/links" %>
+  </div>
