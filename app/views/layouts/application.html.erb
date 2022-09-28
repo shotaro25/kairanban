@@ -36,11 +36,11 @@
                     <%= link_to "お知らせ一覧", posts_path, class: 'nav-link text-dark' %>
                   </button>
                 </li>
-                <!--<li class="nav-item p-2">-->
-                <!--  <buttun type="button" class="btn btn-outline-primary">-->
-                <!--    <#%= link_to "お気に入り一覧", _path(current_user.id), class: 'nav-link text-dark' %>-->
-                <!--  </button>-->
-                <!--</li>-->
+                <li class="nav-item p-2">
+                  <buttun type="button" class="btn btn-outline-primary">
+                    <%= link_to "お気に入り一覧", favorites_users_path, class: 'nav-link text-dark' %>
+                  </button>
+                </li>
                 <li class="nav-item p-2">
                   <buttun type="button" class="btn btn-outline-primary">
                     <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
@@ -57,11 +57,11 @@
                     <%= link_to "会員一覧", admin_users_path, class: 'nav-link text-light', class: 'nav-link text-dark' %>
                   </buttun>
                 </li>
-                <li class="nav-item p-2">
-                  <buttun type="button" class="btn btn-outline-primary">
-                    <%= link_to "出欠一覧", admin_path, class: 'nav-link text-light', class: 'nav-link text-dark' %>
-                  </button>
-                </li>
+                <!--<li class="nav-item p-2">-->
+                <!--  <buttun type="button" class="btn btn-outline-primary">-->
+                <!--    <#%= link_to "出欠一覧", admin_path, class: 'nav-link text-light', class: 'nav-link text-dark' %>-->
+                <!--  </button>-->
+                <!--</li>-->
                 <li class="nav-item p-2">
                   <buttun type="button" class="btn btn-outline-primary">
                     <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %>

@@ -1,0 +1,5 @@
+<% if @favorite_list.present? %>
+  <% @favorite_list.each do |post| %>
+    <%= post.name %>
+  <% end %>
+<% end %>

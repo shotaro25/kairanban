@@ -25,10 +25,15 @@ Rails.application.routes.draw do
   patch "users/withdraw" => "public/users#withdraw" , as: "withdraw"
 
   scope module: :public do
-    resources :posts,only:[:index, :show]
-    resources :users,only:[:show, :edit, :update]
-    resources :favorites,only:[:index, :show]
+    resources :posts,only:[:index, :show] do
+      resource :favorites, only: [:create, :destroy]
+    end
+    resources :users,only:[:show, :edit, :update] do
+      get  :favorites, on: :collection
+    end
   end
-
+   # resources :posts, except: [:index] do
+  #    resource :favorites, only: [:create, :destroy]
+   # end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

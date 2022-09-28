@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="">
-    <h3 class="text-left">新規投稿</h3>
+  <div class="col">
+    <h3 class="col-9">新規投稿</h3>
     <%= form_with model: @post, url:admin_posts_path, local:true do |f| %>
       <p>
         <%= f.label :投稿件名,class: "col-2" %>
@@ -15,7 +15,7 @@
         <%= f.text_area :introduction, placeholder: "ここに説明を記述します",class: "col-6", style: "height:100px" %>
       </p>
       <p>
-      <%= f.label :出欠確認,class: "col-2" %>
+      <%= f.label :投稿表示,class: "col-2" %>
         <%= f.radio_button :is_active, "true" %>
         <%= f.label :is_active, "表示する" %>
         <%= f.radio_button :is_active, "false" %>

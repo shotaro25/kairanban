@@ -1,39 +1,28 @@
 <div class="container">
-  <div class="h4 row my-3">投稿編集</div>
-  <%= form_with model: @post,url: admin_post_path do |f| %>
+  <div class="col">
+    <h3 class="col-9">投稿編集</h3>
+    <%= form_with model: @post, url: admin_post_path do |f| %>
+      <p>
+        <%= f.label :投稿件名, class: "col-2" %>
+        <%= f.text_field :name, class: "col-3" %>
+      </p>
+      <p>
+        <%= f.label :投稿画像, class: "col-2" %>
+        <%= f.file_field :image %>
+      </p>
+      <p>
+        <%= f.label :投稿説明, class: "col-2 align-top" %>
+        <%= f.text_area :introduction, class: "col-6", style: "height:150px" %>
+      </p>
+      <p>
+        <%= f.label :投稿表示, class: "col-2" %>
+        <%= f.radio_button :is_active, true %>表示する
+        <%= f.radio_button :is_active, false %>表示しない
+      </p>
 
-    <div class="row mb-3">
-      <%= f.label "投稿件名" %>
-      <div class="col">
-        <%=f.text_field :name, class: "form-control-sm ml-3" %>
+      <div class="col-2">
+        <%=f.submit "変更を保存", class:"btn btn-success"%>
       </div>
-    </div>
-
-    <div class="row mb-3">
-      <%= f.label "投稿画像" %>
-      <div class="col">
-       <%= f.file_field :image, class: "form-control-file-sm ml-3" %>
-      </div>
-    </div>
-
-    <div class="row mb-3">
-      <%=f.label "投稿説明" %>
-      <div class="col">
-        <%=f.text_area :introduction, class: "form-control-lg ml-1" %>
-      </div>
-    </div>
-
-    <div class="row mb-3">
-      <%= f.label "出欠確認" %>
-      <div class="col">
-       <%= f.radio_button :is_active, :join, :checked =>true %>参加
-       <%= f.radio_button :is_active, :not_join, :checked =>false %>不参加
-      </div>
-    </div>
-
-    <div class="row">
-      <%=f.submit "変更を保存", class:"btn btn-success"%>
-    </div>
   <% end %>
   </div>
 </div>

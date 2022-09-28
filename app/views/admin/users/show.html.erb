@@ -1,71 +1,71 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      
+
       <h5 class="m-4">
         <%= @user.name %>さんの会員詳細
       </h5>
-      
+
       <div class="row mt-3 mx-4">
-        会員ID
+        会員ID：
         <div class="col">
           <%=@user.id %>
         </div>
       </div>
-      
+
       <div class="row mt-3 mx-4">
-        氏名
+        氏名：
         <div class="col">
           <%=@user.name %>
         </div>
       </div>
-      
+
       <div class="row mt-3 mx-4">
-        フリガナ
+        フリガナ：
         <div class="col">
           <%=@user.name_kana %>
         </div>
       </div>
-      
+
       <div class="row mt-3 mx-4">
-        郵便番号
+        郵便番号：
         <div class="col">
           <%=@user.postal_code %>
         </div>
       </div>
-      
+
       <div class="row mt-3 mx-4">
-        住所
+        住所：
         <div class="col">
           <%=@user.address %>
         </div>
       </div>
-      
+
       <div class="row mt-3 mx-4">
-        電話番号
+        電話番号：
         <div class="col">
           <%=@user.telephone_number %>
         </div>
       </div>
-      
+
       <div class="row mt-3 mx-4">
-        メールアドレス
+        メールアドレス：
         <div class="col">
           <%=@user.email %>
         </div>
       </div>
-      
+
       <div class="row  my-3 mx-4">
-        会員ステータス
+        会員ステータス：
         <% if @user.is_active == true %>
-          <div class="col">退会</div>
-        <%else%>
           <div class="col">有効</div>
+        <%else%>
+          <div class="col">退会</div>
         <% end %>
       </div>
-      
+
       <%=link_to '編集する',edit_admin_user_path(@user),class: "btn btn-success mt-1 mx-4" %>
-      
+
     </div>
   </div>
 </div>

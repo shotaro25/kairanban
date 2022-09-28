@@ -1,8 +1,11 @@
 <div class="container">
-  <div class="row h4 m-3">マイページ</div>
+  <div class="row">
+    <h3 class="col-9">マイページ</h3>
+  </div>
+
   <div class="row mt-4 ml-1">
     <div class=" d-flex align-items-center font-weight-bold">登録情報</div>
-    <%=link_to "編集する", edit_user_path(@user), class: 'btn btn-success btn-sm ml-3' %>
+    <%=link_to "変更する", edit_user_path(@user), class: 'btn btn-success btn-sm ml-3' %>
   </div>
 
   <table class="table mt-3 table-bordered">

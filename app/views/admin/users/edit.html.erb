@@ -1,7 +1,7 @@
-<div class="row h5 my-3 mx-5">
-   <%= @user.name %>さんの会員情報編集
-</div>
 <div class="container">
+  <div class="row mb-3">
+    <h4 class="col-9"><%= @user.name %>さんの会員情報編集</h4>
+  </div>
 
   <div class="row mb-3">
     <div class="col-sm-2">
@@ -64,8 +64,8 @@
       </div>
     </div>
 
-    <div class="row ml-5">
-      <%= f.submit "変更を保存", class: "ml-5 btn btn-success btn-lg" %>
+    <div>
+      <%= f.submit "変更を保存", class: "btn btn-success" %>
     </div>
 
   <% end %>

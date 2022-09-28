@@ -2,7 +2,8 @@ class Public::UsersController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @user = User.find(current_user.id)
+    @user = User.find(params[:id])
+    @posts = @user.posts
   end
 
   def edit
@@ -21,11 +22,17 @@ class Public::UsersController < ApplicationController
 
   def withdraw
     @user = User.find(current_user.id)
-    @user.update(is_active: true)
+    @user.update(is_active: false)
     reset_session
     flash[:notice] = "退会処理を実行しました"
     redirect_to root_path
   end
+
+  def favorites
+    favorites = Favorite.where(user_id: current_user.id).pluck(:post_id)
+    @favorite_list = Post.find(favorites)
+  end
+
 
   private
 

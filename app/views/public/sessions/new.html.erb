@@ -1,32 +1,38 @@
-<section class="inner">
-  <h2 class="section-ttl">ログイン</h2>
-  <% if flash[:danger] %>
-    <p class="text-red"><%= flash[:danger] %></p>
-  <% end %>
+<div class="container">
+  <div class="row">
+    <h3 class="col-9">ログイン</h3>
+    <% if flash[:danger] %>
+      <p class="text-red"><%= flash[:danger] %></p>
+    <% end %>
+  </div>
 
   <%= form_with model: @user, url: session_path(resource_name), local: true do |f| %>
-    <div class="field mb2">
-      <%= f.label :email, "メールアドレス" %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div>
+    <table class="user_info user_form">
+      <tbody>
+        <tr>
+          <td>メールアドレス　</td>
+          <td colspan="2"><%= f.email_field :email, autocomplete: "email" %></td>
+        </tr>
+        <tr>
+          <td>パスワード</td>
+          <td colspan="2"><%= f.password_field :password, autocomplete: "current-password" %></td>
+        </tr>
+      </tbody>
+    </table>
 
-    <div class="field mb2">
-      <%= f.label :password, "パスワード" %><br />
-      <%= f.password_field :password, autocomplete: "current-password" %>
-    </div>
-    <% if devise_mapping.rememberable? %>
-      <div class="field">
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
-      </div>
-    <% end %>
+    <!--<#% if devise_mapping.rememberable? %>-->
+    <!--  <div class="field">-->
+    <!--    <#%= f.check_box :remember_me %>-->
+    <!--    <#%= f.label :"メールアドレス、パスワードを記憶する" %>-->
+    <!--  </div>-->
+    <!--<#% end %>-->
 
     <div class="actions">
       <%= f.submit "ログイン", class: "btn btn-primary" %>
     </div>
   <% end %>
 
-  <h2 class="section-ttl">登録がお済みでない方</h2>
+  <h3 class="mt-5">登録がお済みでない方</h3>
   <p><%= link_to "こちら", new_user_registration_path, class: "underline" %>から新規登録を行なってください。</p>
-  <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
-</section>
+  <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %>　お試しの方はこちらから
+</div>
