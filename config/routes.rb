@@ -8,7 +8,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "/" => "homes#top"
-    resources :posts,only:[:index, :new, :create, :show, :edit, :update]
+    resources :posts, only: [:index, :new, :create, :show, :edit, :update] do
+      resources :comments, only: [:destroy]
+    end
     resources :users,only:[:index, :show, :edit,:update]
   end
 
@@ -31,6 +33,10 @@ Rails.application.routes.draw do
     resources :users,only:[:show, :edit, :update] do
       get  :favorites, on: :collection
     end
+  end
+
+  resources :posts do
+    resources :comments, only:[:create, :destroy]
   end
    # resources :posts, except: [:index] do
   #    resource :favorites, only: [:create, :destroy]

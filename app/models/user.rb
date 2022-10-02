@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :posts
   has_many :favorites, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   validates :is_active, inclusion: { in: [false, true] }
 

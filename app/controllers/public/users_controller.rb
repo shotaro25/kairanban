@@ -33,7 +33,6 @@ class Public::UsersController < ApplicationController
     @favorite_list = Post.find(favorites)
   end
 
-
   private
 
   def user_params

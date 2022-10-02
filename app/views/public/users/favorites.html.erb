@@ -1,5 +1,25 @@
-<% if @favorite_list.present? %>
-  <% @favorite_list.each do |post| %>
-    <%= post.name %>
-  <% end %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <h3 class="col-9">お気に入り一覧</h3>
+  </div>
+  <div class="row">
+    <table class="col-10 text-center m-3">
+      <thead>
+        <tr class="table-secondary">
+          <td>投稿日時</td>
+          <td>件名</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% if @favorite_list.present? %>
+          <% @favorite_list.each do |post| %>
+            <tr>
+              <td><%= post.updated_at.strftime("%Y/%m/%d  %H:%M") %></td>
+              <td><%= link_to post.name, post_path(post.id) %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
