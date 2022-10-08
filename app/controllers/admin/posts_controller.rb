@@ -16,7 +16,12 @@ class Admin::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all.order('id DESC').page(params[:page]).per(10)
+    @posts = Post.all
+    @posts = @posts.where('name LIKE ?', "%#{params[:search]}%") if params[:search].present?
+    @posts = @posts.where(tag_id: params[:tag_id]) if params[:tag_id].present?
+    @posts = @posts.page(params[:page])
+
+    # @posts = Post.all.order('id DESC').page(params[:page]).per(10)
   end
 
   def show
@@ -37,7 +42,7 @@ class Admin::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:image, :name, :introduction, :is_active)
+    params.require(:post).permit(:image, :name, :introduction, :is_active, :tag_id)
   end
 
 end

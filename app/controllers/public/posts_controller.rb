@@ -2,14 +2,11 @@ class Public::PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index,:show]
 
   def index
-   # @posts_true = Post.where(is_active: true).order('id DESC').page(params[:page])
-   # @posts_true_count = Post.where(is_active: true).count
-    if params[:search].present?
-     
-      @posts = Post.where('name LIKE ?', "%#{params[:search]}%").where(is_active: true).page(params[:page])
-    else
-       @posts = Post.where(is_active: true).page(params[:page])
-    end
+    @posts = Post.active_posts
+    @posts = @posts.where('name LIKE ?', "%#{params[:search]}%") if params[:search].present?
+    @posts = @posts.where(tag_id: params[:tag_id]) if params[:tag_id].present?
+    @posts = @posts.page(params[:page])
+    
   end
 
   def show

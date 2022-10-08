@@ -1,13 +1,18 @@
 <div class="container">
   <div class="row">
-    <h3 class="col-9">お知らせ一覧</h3>
+    <h3 class="col-8">お知らせ一覧</h3><%= form_tag posts_path, method: :get, class: 'boards__searchForm' do %>
+    <%= select_tag :tag_id, options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+    {prompt: 'タグで絞り込み検索',onchange: 'submit(this.form);'}%>
+  <% end %>
   </div>
+  
   <div class="row">
     <table class="col-10 text-center m-3">
       <thead>
         <tr class="table-secondary">
           <td>投稿日時</td>
           <td>件名</td>
+          <td>タグ</td>
         </tr>
       </thead>
       <tbody>
@@ -15,6 +20,7 @@
           <tr>
             <td><%= post_true.updated_at.strftime("%Y/%m/%d  %H:%M") %></td>
             <td><%= link_to post_true.name, post_path(post_true.id) %></td>
+            <td><%=post_true.tag.name %></td>
           </tr>
         <% end %>
       </tbody>
