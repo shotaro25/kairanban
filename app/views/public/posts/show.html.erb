@@ -26,18 +26,18 @@
 
       <p>コメント件数：<%= @comments.count %></p>
       <% @comments.each do |comment| %>
-  	  <div class="comments-index mb-2">
-        <%= comment.user.name if comment.user %>
-        <%= comment.created_at.strftime('%Y/%m/%d') %><br>
-        <div class="d-flex">
-          <%= comment.comment %>
-          <% if comment.user == current_user %>
-            <div class="comment-delete">
-              <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, class: "btn-sm btn-danger ml-4" %>
-            </div>
+    	  <div class="comments-index mb-2">
+          <%= comment.user.name if comment.user %>
+          <%= comment.created_at.strftime('%Y/%m/%d') %><br>
+          <div class="d-flex">
+            <%= comment.comment %>
+            <% if comment.user == current_user %>
+              <div class="comment-delete">
+                <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, class: "btn-sm btn-danger ml-4" %>
+              </div>
+            <% end %>
+          </div>
         </div>
-      </div>
-      <% end %>
       <% end %>
       <%= paginate @comments %>
     </div>
